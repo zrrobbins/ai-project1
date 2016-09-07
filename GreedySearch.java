@@ -38,7 +38,7 @@ public class GreedySearch extends Search {
 			System.currentTimeMillis() - startTimeMillis < timeLimit * 1000
 		) {
 			curr.expand(this.operations);
-			nodesExpanded += this.operations.length;
+			nodesExpanded += 1;
 			for (Node n : curr.children) {
 				queue.add(n);
 			}
@@ -70,19 +70,6 @@ public class GreedySearch extends Search {
 		System.out.println("Nodes expanded: " + nodesExpanded);
 		System.out.println("Maximum search depth: " + maxSearchDepth);
 
-	}
-
-	/**
-	 * Given the current max depth, determines if the given node is located deeper, and if so, returns its depth.
-	 * Otherwise, returns the currentMaxDepth.
-	 */
-	private int updateDepth(int currentMaxDepth, Node node) {
-		int counter = 0;
-		while (node.parent != null) {
-			counter++;
-			node = node.parent;
-		}
-		return Math.max(currentMaxDepth, counter);
 	}
 
 	/**
